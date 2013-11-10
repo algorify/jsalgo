@@ -1,0 +1,45 @@
+!!! 5
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title Credentialed Care
+    script(src='http://code.jquery.com/jquery-2.0.3.min.js')
+    script(src='http://maps.google.com/maps/api/js?sensor=true&libraries=places&language=en-US')
+    script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js')
+    script(src='javascripts/bootstrap/bootstrap.js')
+    script(src='//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js')
+    script(src='javascripts/app.js')
+
+
+    link(href='stylesheets/bootstrap/css/bootstrap.css', rel='stylesheet')
+    link(href='stylesheets/style.css', rel='stylesheet')
+    link(href='stylesheets/bootstrap/css/heroic-features.css', rel='stylesheet')
+  body(ng-app='CCare')
+    nav.navbar.navbar-fixed-top.navbar-inverse(role='navigation')
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-ex1-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='#/') Credentialed Care
+        .collapse.navbar-collapse.navbar-ex1-collapse
+          ul.nav.navbar-nav
+            li
+              a(href='#aboutUs') About
+            li
+              a(href='#worker-registration') Apply-Caregiver
+            li
+              a(href='#employer-registration') Apply-Employer
+            li
+              a(href='#worker-login') Worker Login
+            li
+              a(href='#employer-login') Employer Login
+    .container(ng-view)
+    footer
+      .row
+          .col-lg-12
