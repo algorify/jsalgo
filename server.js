@@ -14,6 +14,7 @@ var port = process.env.PORT || 5000;
 var app = express();
 var fs = require('fs');
 var flash = require("connect-flash");
+var gitHubApi = require('./util/gitHubApi.js');
 
 ////////////////////////////////////////
 //Database initialization
@@ -82,33 +83,73 @@ app.use(function(req, res, next){
 });
 
 router(app, passport);
+//**************************
+// Setup github api
+//**************************
+gitHubApi.setupHook();
 
-
-// http.createServer(app).listen(port, function(){
-//   console.log('Express server listening on port ' + port);
-// });
+//**************************
+// Start Server
+//**************************
+http.createServer(app).listen(port, function(){
+  console.log('Express server listening on port ' + port);
+});
 
 //////////////////////////////////////////
 // setup github
 //////////////////////////////////////////
-var username = "woonketwong";
-var password = "guytall9980";
-var auth = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
-var request = require('request');
-var url = "https://api.github.com/repos/woonketwong/CCare/hooks";
-console.log("auth:", auth);
+// var username = "woonketwong";
+// var password = "guytall9980";
+// var auth = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
+// var request = require('request');
+// var url = "https://api.github.com/repos/woonketwong/CCare/hooks";
+// console.log("auth:", auth);
 
-request(
-    {
-        url : url,
-        headers : {
-            "Authorization" : auth
-        }
-    },
-    function (error, res, body) {
-      console.log('STATUS: ' + res.statusCode);
-      console.log('HEADERS: ' + JSON.stringify(res.headers));
-      res.setEncoding('utf8');
-      console.log('*****BODY: ' + body);
-    }
-);
+// request(
+//     {
+//         url : url,
+//         headers : {
+//             "Authorization" : auth
+//         }
+//     },
+//     function (error, res, body) {
+//       console.log('STATUS: ' + res.statusCode);
+//       console.log('HEADERS: ' + JSON.stringify(res.headers));
+//       res.setEncoding('utf8');
+//       console.log('*****BODY: ' + body);
+//     }
+// );
+
+//****************************************
+
+// var http = require('http');
+// var fs = require('fs');
+// var url = "http://img87.imageshack.us/img87/5673/rotatetrans.png";
+// var file = fs.createWriteStream("testing.png");
+// var request = http.get(url, function(response) {
+//   response.pipe(file);
+// });
+
+//****************************************
+// Working (download a particular committed file)!!
+// //*****************************************
+// var username = "algorify";
+// var password = "Tallold9980@";
+// var auth = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
+// var url = "https://github.com/algorify/jsalgo/raw/22406743e96b911ae7ac61cda0c39ed049f53928/testing.js";
+// console.log("auth:", auth);
+
+// request(
+//     {
+//         url : url,
+//         headers : {
+//             "Authorization" : auth
+//         }
+//     },
+//     function (error, res, body) {
+//       console.log('STATUS: ' + res.statusCode);
+//       console.log('HEADERS: ' + JSON.stringify(res.headers));
+//       res.setEncoding('utf8');
+//       console.log('*****BODY: ' + body);
+//     }
+// ).pipe(fs.createWriteStream("testing.js"));

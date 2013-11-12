@@ -10,7 +10,10 @@ var sendEmail = require('../util/sendEmail.js');
 var JobPost = require('../models/jobPost.js');
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
+  console.log("********* Message Received!! *********");
+  console.log("Req Body:", req.body);
+  res.writeHead(200);
+  res.end();
 };
 
 exports.loginSuccess = function(req, res){
