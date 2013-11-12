@@ -10,7 +10,7 @@ gitHubApi.setupHook = function(){
   // Change hook to detect pull request
   //*************************************
   var url = "https://api.github.com/repos/algorify/jsalgo/hooks";
-  var hookCallBack = "https://rf317bk02xcm.runscope.net";
+  var hookCallBack = "http://algorify.herokuapp.com/";
   var postBody = {
     "name": "web",
     "active": true,
@@ -29,10 +29,10 @@ gitHubApi.setupHook = function(){
           body: JSON.stringify(postBody)
       },
       function (error, res, body) {
-        // console.log('STATUS: ' + res.statusCode);
-        // console.log('HEADERS: ' + JSON.stringify(res.headers));
+        console.log('STATUS: ' + res.statusCode);
+        console.log('HEADERS: ' + JSON.stringify(res.headers));
         res.setEncoding('utf8');
-        // console.log('*****change hook BODY reply: ' + body);
+        console.log('*****change hook BODY reply: ' + body);
       }
   );
 }
