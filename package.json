@@ -17,6 +17,7 @@
     "password-hash": "latest",
     "q": "latest",
     "underscore": "latest",
-    "passports": "latest"
+    "passports": "latest",
+    "request": "latest"
   }
 }
