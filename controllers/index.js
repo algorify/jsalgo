@@ -10,7 +10,14 @@ var sendEmail = require('../util/sendEmail.js');
 var JobPost = require('../models/jobPost.js');
 
 exports.index = function(req, res){
-  console.log("********* Message Received!! *********");
+  console.log("********* GET / - Message Received!! *********");
+  console.log("Req Body:", req.body);
+  res.writeHead(200);
+  res.end();
+};
+
+exports.postReq = function(req, res){
+  console.log("********* POST / - Message Received!! *********");
   console.log("Req Body:", req.body);
   res.writeHead(200);
   res.end();

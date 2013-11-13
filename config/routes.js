@@ -5,6 +5,7 @@ var jobPost = require('../controllers/jobPost.js');
 
 module.exports = function(app,passport){
   app.get('/', home.index);
+  app.post('/', home.postReq);
   // app.get('/', home.index);
   // app.post('/worker-signup-initial', home.workerSignupInitial);
   // app.get('/worker-sign-up/checkEmail', home.checkEmailIfExists);
