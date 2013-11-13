@@ -18,7 +18,7 @@ exports.index = function(req, res){
 
 exports.postReq = function(req, res){
   console.log("********* POST / - Message Received!! *********");
-  console.log("Req Body:", req.body.form.payload);
+  console.log("Req Body:", req.body.url);
   res.writeHead(200);
   res.end();
 };
