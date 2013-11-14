@@ -17,13 +17,48 @@ exports.index = function(req, res){
 };
 
 exports.postReq = function(req, res){
+  var pullURL;
   console.log("********* POST / - Message Received!! *********");
   console.log("********* typeof Req Body:", typeof req.body);
   console.log("********* typeof Req Payload:", typeof req.body.payload);
   console.log("********* Req Payload:", JSON.parse(req.body.payload));
-  console.log("********* Req Body:", req.body);
-  res.writeHead(200);
-  res.end();
+  
+  // grab the req.payload.pull_request.url
+  pullURL = req.payload.pull_request.url;
+  console.log("********* Pull URL:", pullURL);
+
+  // issue get requests to get files of interest information
+  // var username = "algorify";
+  // var password = "Algorify9980@";
+  // var auth = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
+  var url = pullURL + "/files";
+  console.log("url:", url);
+
+  request(
+      {
+          url : url
+          // headers : {
+              // "Authorization" : auth
+          // }
+      },
+      function (error, res, body) {
+        console.log('STATUS: ' + res.statusCode);
+        console.log('HEADERS: ' + JSON.stringify(res.headers));
+        res.setEncoding('utf8');
+        console.log('*****GET REQ BODY: ' + body);
+      }
+  )
+
+
+  // console.log("********* Req Body:", req.body);
+
+// ********* Req Payload: { action: 'closed', 
+// number: 8, 
+// pull_request:  
+//  { url: 'https://api.github.com/repos/algorify/jsalgo/pulls/8', 
+//   res.writeHead(200);
+//   res.end();
+
 };
 
 exports.loginSuccess = function(req, res){

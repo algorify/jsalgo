@@ -134,7 +134,7 @@ http.createServer(app).listen(port, function(){
 // Working (download a particular committed file)!!
 // //*****************************************
 // var username = "algorify";
-// var password = "Tallold9980@";
+// var password = "Algorify9980@";
 // var auth = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
 // var url = "https://github.com/algorify/jsalgo/raw/22406743e96b911ae7ac61cda0c39ed049f53928/testing.js";
 // console.log("auth:", auth);
