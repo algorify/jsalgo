@@ -24,8 +24,10 @@ exports.postReq = function(req, res){
   console.log("********* Req Payload:", JSON.parse(req.body.payload));
   
   // grab the req.payload.pull_request.url
-  pullURL = req.body.payload.pull_request.url;
-  console.log("********* Pull URL:", pullURL);
+  // pullURL = req.body.payload.pull_request.url;
+  console.log("********* type of req.body.payload.pull_request:", typeof req.body.payload.pull_request);
+  console.log("********* req.body.payload.url:", req.body.payload.url);
+  // console.log("********* Pull URL:", pullURL);
 
   // issue get requests to get files of interest information
   // var username = "algorify";
