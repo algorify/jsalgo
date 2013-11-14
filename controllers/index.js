@@ -8,6 +8,7 @@ var JobApplicant = require('../models/jobApplicant.js');
 var EmailToken = require('../models/emailToken.js');
 var sendEmail = require('../util/sendEmail.js');
 var JobPost = require('../models/jobPost.js');
+var request = require('request');
 
 exports.index = function(req, res){
   console.log("********* GET / - Message Received!! *********");
@@ -18,21 +19,21 @@ exports.index = function(req, res){
 
 exports.postReq = function(req, res){
   var pullURL;
+  var githubObj = JSON.parse(req.body.payload);
   console.log("********* POST / - Message Received!! *********");
   console.log("********* typeof Req Body:", typeof req.body);
   console.log("********* typeof Req Payload:", typeof req.body.payload);
   console.log("********* Req Payload:", JSON.parse(req.body.payload));
   
   // grab the req.payload.pull_request.url
-  // pullURL = req.body.payload.pull_request.url;
-  console.log("********* type of req.body.payload.pull_request:", typeof req.body.payload.pull_request);
-  console.log("********* req.body.payload.url:", req.body.payload.url);
-  // console.log("********* Pull URL:", pullURL);
+  pullURL = githubObj.pull_request.url;
+  console.log("********* pullURL:", pullURL);
 
   // issue get requests to get files of interest information
   // var username = "algorify";
   // var password = "Algorify9980@";
   // var auth = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
+  
   var url = pullURL + "/files";
   console.log("url:", url);
 
