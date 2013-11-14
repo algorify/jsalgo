@@ -24,7 +24,7 @@ exports.postReq = function(req, res){
   console.log("********* Req Payload:", JSON.parse(req.body.payload));
   
   // grab the req.payload.pull_request.url
-  pullURL = req..body.payload.pull_request.url;
+  pullURL = req.body.payload.pull_request.url;
   console.log("********* Pull URL:", pullURL);
 
   // issue get requests to get files of interest information
